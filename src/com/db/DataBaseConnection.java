@@ -1,5 +1,7 @@
 package com.db;
 
+import com.Main;
+
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -14,8 +16,8 @@ public class DataBaseConnection {
     public static Connection getInstance(){
         if (connection ==null){
             try {
-                connection= DriverManager.getConnection("jdbc:oracle:thin:@172.16.110.122:1525:PDB_DEV_EHS"
-                        ,"autism_app_develop","autism_app_develop");
+                connection= DriverManager.getConnection(Main.CONFIG.getDatasourceUrl()
+                        ,Main.CONFIG.getDatasourceUN(),Main.CONFIG.getDatasourcePW());
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }

@@ -12,5 +12,9 @@
     <orderEntry type="library" name="spire.presentation.free-2.2.3" level="project" />
     <orderEntry type="library" name="commons-cli-1.4" level="project" />
     <orderEntry type="library" name="jackson-annotations-2.13.0-rc1" level="project" />
+    <orderEntry type="library" name="snakeyaml-1.29" level="project" />
+    <orderEntry type="library" name="core-3.0.0" level="project" />
+    <orderEntry type="library" name="jakarta.xml.bind-api-2.3.3" level="project" />
+    <orderEntry type="library" name="rt" level="project" />
   </component>
 </module>

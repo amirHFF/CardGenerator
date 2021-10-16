@@ -1,5 +1,6 @@
 package com.model;
 
+
 public class CardInfo {
     private String firstName;
     private String lastName;
@@ -8,12 +9,13 @@ public class CardInfo {
     private int year;
     private int month;
     private int day;
+    private String birthDay;
     private String country;
     private String state;
     private String city;
     private String gender;
     private String contact;
-    private String picture;
+    private byte[] picture;
     private boolean seizure;
     private boolean ADHD;
     private boolean communicationProblem;
@@ -27,6 +29,8 @@ public class CardInfo {
     private String autismLastName;
     private String autismNationalCode;
     private String ASSOID;
+    private byte[] qrCode;
+    private String picHash;
 
     public String getFirstName() {
         return firstName;
@@ -84,6 +88,14 @@ public class CardInfo {
         this.day = day;
     }
 
+    public String getBirthDay() {
+        return String.valueOf(year).concat("/")+String.valueOf(month).concat("/")+String.valueOf(day);
+    }
+
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
+    }
+
     public String getCountry() {
         return country;
     }
@@ -124,11 +136,11 @@ public class CardInfo {
         this.contact = contact;
     }
 
-    public String getPicture() {
+    public byte[] getPicture() {
         return picture;
     }
 
-    public void setPicture(String picture) {
+    public void setPicture(byte[] picture) {
         this.picture = picture;
     }
 
@@ -226,5 +238,25 @@ public class CardInfo {
 
     public void setASSOID(String ASSOID) {
         this.ASSOID = ASSOID;
+    }
+
+    public boolean isCommunicationProblem() {
+        return communicationProblem;
+    }
+
+    public byte[] getQrCode() {
+        return qrCode;
+    }
+
+    public void setQrCode(byte[] qrCode) {
+        this.qrCode = qrCode;
+    }
+
+    public String getPicHash() {
+        return picHash;
+    }
+
+    public void setPicHash(String picHash) {
+        this.picHash = picHash;
     }
 }

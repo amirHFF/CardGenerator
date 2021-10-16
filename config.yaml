@@ -1,0 +1,10 @@
+---
+pptpDestination: "src/com/pptpRepository"
+pptpTemplatePath: "F:\\javaWorkSpace\\CardGenerator\\template.pptx"
+datasourceUrl: "jdbc:oracle:thin:@172.16.110.122:1525:PDB_DEV_EHS"
+datasourceUN: "autism_app_develop"
+datasourcePW: "autism_app_develop"
+qrCodeUrl: "https://arsh.pod.ir/registry/autism/show-details-from-qr/"
+token: "30aa7ede70254a569f6838e13de4bfe5"
+downloadService: "https://sandbox.podspace.ir:8443/"
+checkMarkImagePath: "F:\\javaWorkSpace\\CardGenerator\\check.png"

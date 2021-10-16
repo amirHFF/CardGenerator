@@ -4,6 +4,7 @@
       <root url="jar://$PROJECT_DIR$/../../libs/jacsonCore/jackson-annotations-2.13.0-rc1.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../libs/jacsonCore/jackson-core-2.13.0-rc1.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../libs/jacsonCore/jackson-databind-2.13.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../libs/jackson-dataformat-yaml-2.13.0-rc2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

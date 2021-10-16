@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.Setting">
+   <children>
+      <Label text="Setting">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="63.0" prefWidth="600.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="50.0" prefWidth="250.0">
+               <children>
+                  <Label text="Datasource URL" />
+                  <TextField fx:id="datasourceUrl" prefHeight="25.0" prefWidth="250.0" promptText="Datasource URL">
+                     <font>
+                        <Font name="Calibri" size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets right="15.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0">
+               <children>
+                  <Label text="Datasource User name" />
+                  <TextField fx:id="datasourceUN" alignment="TOP_LEFT" prefWidth="250.0" promptText="Datasource Username">
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0">
+               <children>
+                  <Label text="Datasource Password" />
+                  <TextField fx:id="datasourcePW" prefHeight="25.0" prefWidth="250.0" promptText="Datasource Password">
+                     <VBox.margin>
+                        <Insets right="15.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0">
+               <children>
+                  <Label text="QR Code URI" />
+                  <TextField fx:id="qrCodeUrl" prefWidth="250.0" promptText="Qr Code Url">
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0">
+               <children>
+                  <Label text="Token" />
+                  <TextField fx:id="token" prefHeight="25.0" prefWidth="250.0" promptText="Token">
+                     <VBox.margin>
+                        <Insets right="15.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0">
+               <children>
+                  <Label text="Check mark image Path" />
+                  <TextField fx:id="checkMarkImagePath" prefWidth="250.0" promptText="check Mark Image Path">
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0">
+               <children>
+                  <Label text="Power point Destination path" />
+                  <TextField fx:id="pptpDestination" prefHeight="25.0" prefWidth="250.0" promptText="PowerPoint destination path">
+                     <VBox.margin>
+                        <Insets right="15.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0">
+               <children>
+                  <Label text="Power point template" />
+                  <TextField fx:id="pptpTemplatePath" prefWidth="250.0" promptText="Power point template">
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="300.0">
+               <children>
+                  <Label text="Download service" />
+                  <TextField fx:id="downloadService" prefHeight="25.0" prefWidth="300.0" promptText="Download Service" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Button fx:id="applyButton" mnemonicParsing="false" onAction="#onApplyAction" prefHeight="30.0" prefWidth="75.0" text="Apply" />
+   </children>
+</VBox>

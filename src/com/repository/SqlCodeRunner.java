@@ -1,7 +1,9 @@
 package com.repository;
 
+import com.controller.Controller;
 import com.db.DataBaseConnection;
 import com.model.CardInfo;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -80,7 +82,8 @@ public class SqlCodeRunner {
                 cardInfo.setCity(resultSet.getString(9));
                 cardInfo.setGender(resultSet.getString(10));
                 cardInfo.setContact(resultSet.getString(11));
-                cardInfo.setPicture(resultSet.getString(12));
+                cardInfo.setPhone(cardInfo.getContact());
+                cardInfo.setPicHash(resultSet.getString(12));
                 cardInfo.setSeizure(resultSet.getBoolean(13));
                 cardInfo.setADHD(resultSet.getBoolean(14));
                 cardInfo.setCommunicationProblem(resultSet.getBoolean(15));
@@ -95,8 +98,10 @@ public class SqlCodeRunner {
                 cardInfo.setCSSOID(resultSet.getString(24));
                 cardInfoList.add(cardInfo);
             }
+            if (cardInfoList.size()==0)
+                Controller.lunchAlert("no record registered for these nationalCodes", Alert.AlertType.INFORMATION);
         }catch (Exception ex){
-            ex.printStackTrace();
+            Controller.lunchAlert(ex.getMessage(), Alert.AlertType.ERROR);
         }
         return cardInfoList;
     }
