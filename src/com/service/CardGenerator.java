@@ -178,10 +178,10 @@ public class CardGenerator {
         return stream.toByteArray();
     }
 
-    public final byte[] downloadFile(String token, String fileHash) {
+    public final byte[] downloadFile(String token, CardInfo cardInfo) {
         byte[] byteArray = null;
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpGet request = new HttpGet("https://sandbox.podspace.ir:8443/".concat("api/files/")+ fileHash);
+        HttpGet request = new HttpGet("https://sandbox.podspace.ir:8443/".concat("api/files/")+ cardInfo.getPicHash());
         try {
 //            request.setHeader(HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded");
             request.setHeader("Authorization", token);
@@ -197,7 +197,8 @@ public class CardGenerator {
                 }
             }
             else
-                Controller.lunchAlert("http error : " +httpResponse.getCode(), Alert.AlertType.ERROR);
+                Controller.lunchAlert(String.format("get picture service from pod for national code %1$s fail http error %2$s: "
+                        ,cardInfo.getNationalCode() ,httpResponse.getCode()), Alert.AlertType.ERROR);
 
         } catch (Exception exception) {
             Controller.lunchAlert(exception.getMessage(), Alert.AlertType.ERROR);

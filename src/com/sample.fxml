@@ -53,6 +53,7 @@
                       <Menu mnemonicParsing="false" text="Setting">
                         <items>
                           <MenuItem fx:id="settingMenu" mnemonicParsing="false" onAction="#onSettingClick" text="setting" />
+                              <MenuItem fx:id="sessionSetting" mnemonicParsing="false" onAction="#onSessionSetting" text="Change session" />
                         </items>
                       </Menu>
                     </menus>
@@ -64,12 +65,12 @@
             </FlowPane>
             <FlowPane hgap="10.0" prefHeight="25.0" prefWidth="280.0">
                <children>
-                  <RadioButton fx:id="lineBreak" mnemonicParsing="false" text="split with  Line break">
+                  <RadioButton fx:id="lineBreak" mnemonicParsing="false" onAction="#onRadioButtonClick" text="split with  Line break">
                      <FlowPane.margin>
                         <Insets left="10.0" top="5.0" />
                      </FlowPane.margin>
                   </RadioButton>
-                  <RadioButton fx:id="comma" mnemonicParsing="false" text="split with comma">
+                  <RadioButton fx:id="comma" mnemonicParsing="false" onAction="#onRadioButtonClick" text="split with comma">
                      <FlowPane.margin>
                         <Insets top="5.0" />
                      </FlowPane.margin>

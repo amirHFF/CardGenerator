@@ -19,15 +19,15 @@ import javafx.stage.Stage;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Controller implements Initializable {
 
     private static Alert alert;
-
     @FXML
-    private MenuItem settingMenu;
+    private MenuItem settingMenu, sessionSetting;
 
     @FXML
     private Button startProcess;
@@ -48,11 +48,11 @@ public class Controller implements Initializable {
         String pureCode = nationalCodeField.getText().replaceAll(" ", "");
         HashSet<String> nationalCodeSet;
         if (pureCode.contains("--") && pureCode.contains("==")) {
-            nationalCodeSet=checkDuplicate(new HashSet<>(Set.of(pureCode.substring(0, pureCode.indexOf("--")).split(splitter))),
+            nationalCodeSet = checkDuplicate(new HashSet<>(Set.of(pureCode.substring(0, pureCode.indexOf("--")).split(splitter))),
                     new HashSet<>(Set.of(pureCode.substring(pureCode.indexOf("--") + 2, pureCode.indexOf("==")).split(splitter))));
-        }
-        else {
-            nationalCodeSet=new HashSet<>(Set.of(pureCode.split(splitter)));
+            nationalCodeField.setText(nationalCodeSet.toString());
+        } else {
+            nationalCodeSet = new HashSet<>(Set.of(pureCode.split(splitter)));
         }
         SqlCodeRunner sqlCodeRunner = new SqlCodeRunner();
         if (nationalCodeValidation(pureCode)) {
@@ -63,7 +63,7 @@ public class Controller implements Initializable {
             try {
                 cardInfoList = sqlCodeRunner.fetchAutismByNationalCode(nationalCodeSet);
                 for (CardInfo cardInfo : cardInfoList) {
-                    cardInfo.setPicture(cardGenerator.downloadFile(Main.CONFIG.getToken(), cardInfo.getPicHash()));
+                    cardInfo.setPicture(cardGenerator.downloadFile(Main.CONFIG.getToken(), cardInfo));
                     cardInfo.setQrCode(cardGenerator.qrGenerate(Main.CONFIG.getQrCodeUrl() + cardInfo.getNationalCode()));
                     cardGenerator.CardGenerator(checkMarkImage, cardInfo);
                 }
@@ -77,14 +77,11 @@ public class Controller implements Initializable {
 
     @FXML
     private void onRadioButtonClick(ActionEvent actionEvent) {
-        if (comma.isSelected()) {
-            lineBreak.setSelected(false);
-            splitter = ",";
-        }
         if (lineBreak.isSelected()) {
-            comma.setSelected(false);
             splitter = "\n";
         }
+        if (!lineBreak.isSelected())
+            splitter=",";
     }
 
     @FXML
@@ -102,6 +99,25 @@ public class Controller implements Initializable {
         } catch (IOException e) {
             nationalCodeField.setText(Arrays.toString(e.getStackTrace()));
             lunchAlert(e.getMessage(), Alert.AlertType.WARNING);
+        }
+    }
+
+    @FXML
+    public void onSessionSetting(ActionEvent actionEvent) {
+        SqlCodeRunner sqlCodeRunner = new SqlCodeRunner();
+        TextInputDialog sessionInput = new TextInputDialog();
+        sessionInput.setContentText("Set new session");
+        sessionInput.showAndWait();
+        if (sessionInput.getEditor().getText()!=null) {
+            try {
+                boolean state = sqlCodeRunner.changeSession(sessionInput.getEditor().getText());
+                if (state)
+                    lunchAlert("successful alter session", Alert.AlertType.INFORMATION);
+                else
+                    lunchAlert("failure alter session", Alert.AlertType.ERROR);
+            } catch (SQLException ex) {
+                lunchAlert(ex.getMessage(), Alert.AlertType.ERROR);
+            }
         }
     }
 
@@ -135,6 +151,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        comma.setSelected(true);
         nationalCodeField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String s2) {

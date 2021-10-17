@@ -107,4 +107,9 @@ public class SqlCodeRunner {
         }
         return cardInfoList;
     }
+    public boolean changeSession(String session) throws SQLException {
+        connection=DataBaseConnection.getInstance();
+        Statement statement = connection.createStatement();
+        return statement.execute("ALTER SESSION SET CURRENT_SCHEMA =".concat(session));
+    }
 }
