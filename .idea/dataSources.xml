@@ -8,5 +8,12 @@
       <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
       <jdbc-url>jdbc:oracle:thin:@localhost:1521:orcl</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="pardis" uuid="b17e894a-c7bd-42de-8947-1f88c3adf5f3">
+      <driver-ref>oracle</driver-ref>
+      <synchronize>true</synchronize>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@172.16.110.122:1525:PDB_DEV_EHS</jdbc-url>
+    </data-source>
   </component>
 </project>

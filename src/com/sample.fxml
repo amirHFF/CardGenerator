@@ -2,17 +2,20 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="229.0" prefWidth="617.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.Controller">
    <center>
-      <TextArea fx:id="nationalCodeField" nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" promptText="کد ملی افراد را توسط کاما جدا کنید" BorderPane.alignment="CENTER">
+      <TextArea fx:id="nationalCodeField" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" promptText="کد ملی افراد را توسط کاما جدا کنید" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="2.0" />
          </BorderPane.margin>
@@ -22,27 +25,65 @@
       </TextArea>
    </center>
    <bottom>
-      <Button fx:id="startProcess" mnemonicParsing="false" onAction="#onStartClick" prefHeight="43.0" prefWidth="121.0" text="Button" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" />
          </BorderPane.margin>
-      </Button>
+         <children>
+            <Button fx:id="startProcess" mnemonicParsing="false" onAction="#onStartClick" prefHeight="40.0" prefWidth="120.0" text="Generate">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Existence Check">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
    </bottom>
    <top>
       <FlowPane prefHeight="12.0" prefWidth="617.0" BorderPane.alignment="CENTER">
          <children>
-            <MenuBar accessibleRole="MENU_ITEM">
-              <menus>
-                <Menu mnemonicParsing="false" text="Setting">
-                  <items>
-                    <MenuItem fx:id="settingMenu" mnemonicParsing="false" onAction="#onSettingClick" text="setting" />
-                  </items>
-                </Menu>
-              </menus>
+            <FlowPane prefHeight="25.0" prefWidth="135.0">
+               <children>
+                  <MenuBar accessibleRole="MENU_ITEM">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="Setting">
+                        <items>
+                          <MenuItem fx:id="settingMenu" mnemonicParsing="false" onAction="#onSettingClick" text="setting" />
+                        </items>
+                      </Menu>
+                    </menus>
+                     <FlowPane.margin>
+                        <Insets left="5.0" />
+                     </FlowPane.margin>
+                  </MenuBar>
+               </children>
+            </FlowPane>
+            <FlowPane hgap="10.0" prefHeight="25.0" prefWidth="280.0">
+               <children>
+                  <RadioButton fx:id="lineBreak" mnemonicParsing="false" text="split with  Line break">
+                     <FlowPane.margin>
+                        <Insets left="10.0" top="5.0" />
+                     </FlowPane.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="comma" mnemonicParsing="false" text="split with comma">
+                     <FlowPane.margin>
+                        <Insets top="5.0" />
+                     </FlowPane.margin>
+                  </RadioButton>
+               </children>
                <FlowPane.margin>
-                  <Insets left="5.0" />
+                  <Insets />
                </FlowPane.margin>
-            </MenuBar>
+            </FlowPane>
+            <FlowPane prefHeight="25.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="countingLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="200.0" text="Label" visible="false" />
+               </children>
+            </FlowPane>
          </children>
       </FlowPane>
    </top>

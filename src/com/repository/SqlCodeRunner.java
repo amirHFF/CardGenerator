@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class SqlCodeRunner {
@@ -58,9 +59,10 @@ public class SqlCodeRunner {
                     "where C_AUTISTIC_NATIONAL_CODE in (\n" )
                     ;
 
-    public List<CardInfo> fetchAutismByNationalCode(List<String> nationalCodes) throws SQLException {
+    public HashSet<CardInfo> fetchAutismByNationalCode(HashSet<String> nationalCodes) throws SQLException {
         connection=DataBaseConnection.getInstance();
-        List<CardInfo> cardInfoList=new ArrayList<>();
+//        List<CardInfo> cardInfoList=new ArrayList<>();
+        HashSet<CardInfo> cardInfoList=new HashSet<>();
         for (String nationalCode : nationalCodes) {
             code.append(nationalCode);
             code.append(",");

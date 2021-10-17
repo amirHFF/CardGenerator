@@ -1,6 +1,8 @@
 package com.db;
 
 import com.Main;
+import com.controller.Controller;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -19,7 +21,7 @@ public class DataBaseConnection {
                 connection= DriverManager.getConnection(Main.CONFIG.getDatasourceUrl()
                         ,Main.CONFIG.getDatasourceUN(),Main.CONFIG.getDatasourcePW());
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                Controller.lunchAlert(ex.getMessage(), Alert.AlertType.ERROR);
             }
         }
         return connection;
